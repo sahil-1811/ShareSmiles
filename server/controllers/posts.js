@@ -15,6 +15,7 @@ export const getPosts = async (req,res)=>{
     }
 }
 
+
 export const createPost= async (req,res)=>{
     const post =req.body
     const newPost =new PostMessage(post)
@@ -38,6 +39,16 @@ export const updatePost = async (req, res) => {
     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 
     res.json(updatedPost);
+}
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    await PostMessage.findByIdAndRemove(id);
+
+    res.json({ message: "Post deleted successfully." });
 }
 
 export default router;
