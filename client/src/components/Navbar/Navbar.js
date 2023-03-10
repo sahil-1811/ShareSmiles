@@ -18,11 +18,17 @@ const Navbar = () =>{
     const [user,setUser]=React.useState(JSON.parse(localStorage.getItem('profile')))
     // const user = null
 
-    React.useEffect(()=>{
-        const token =user?.token
-        setUser(JSON.parse(localStorage.getItem('profile')))
-    },[location])
-
+    React.useEffect(() => {
+        const token = user?.token;
+    
+        if (token) {
+          const decodedToken = decode(token);
+    
+          if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
+    
+        setUser(JSON.parse(localStorage.getItem('profile')));
+      }, [location]);
 
     const logout = () => {
         dispatch({ type: actionType.LOGOUT });
