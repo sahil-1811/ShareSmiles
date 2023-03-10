@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Avatar, Button ,Paper, Grid, Typography, Container, TextField} from '@material-ui/core'
+import {Avatar, Button ,Paper, Grid, Typography, Container} from '@material-ui/core'
 import {GoogleLogin} from '@react-oauth/google'
 
 import { useHistory } from 'react-router-dom';
@@ -13,7 +13,10 @@ import useStyles from './styles'
 import Input from './Input'
 import Icon from './Icon'
 import { useLocation } from 'react-router-dom';
+import {signin, signup} from '../../actions/auth'
 
+
+const initialState ={firstname:"",lastname:"",email:"",password:"",confirmPassword:""}
 const Signup=()=>{
     const classes = useStyles()
     const history = useHistory()
@@ -21,21 +24,29 @@ const Signup=()=>{
     const dispatch = useDispatch()
     const [showPassword,setShowPassword]=React.useState(false)
     const [isSignup,setIsSignup]= React.useState(false)
+    const [formData,setFormData] = React.useState(initialState)
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-        console.log("Submitted")
+        
+        if (isSignup){
+            dispatch(signup(formData, history))
+
+        }else{
+            dispatch(signin(formData, history))
+
+        }
     }
 
     const handleChange=(e)=>{
         e.preventDefault()
-        console.log("Sumittrd")
+        setFormData({...formData,[e.target.name]:e.target.value})
 
     }
 
     const switchMode=()=>{
         setIsSignup((prevSignup)=>!prevSignup)
-        handleShowPassword(false)
+        setShowPassword(false)
     }
 
     const handleShowPassword=()=>setShowPassword((prevShowPassword)=>!prevShowPassword)

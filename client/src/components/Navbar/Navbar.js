@@ -7,19 +7,21 @@ import memories from '../../images/memories.png'
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles'
 import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () =>{
     const classes = useStyles()
     const dispatch = useDispatch();
     const history = useHistory()
+    const location = useLocation()
 
     const [user,setUser]=React.useState(JSON.parse(localStorage.getItem('profile')))
     // const user = null
 
-    // React.useEffect(()=>{
-    //     const token =user?.token
-    //     setUser(JSON.parse(localStorage.getItem('profile')))
-    // },[location])
+    React.useEffect(()=>{
+        const token =user?.token
+        setUser(JSON.parse(localStorage.getItem('profile')))
+    },[location])
 
 
     const logout = () => {
