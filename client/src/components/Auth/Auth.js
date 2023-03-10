@@ -45,6 +45,7 @@ const Signup=()=>{
     }
 
     const switchMode=()=>{
+        setFormData(initialState);
         setIsSignup((prevSignup)=>!prevSignup)
         setShowPassword(false)
     }
