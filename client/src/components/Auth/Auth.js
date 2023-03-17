@@ -52,21 +52,21 @@ const Signup=()=>{
 
     const handleShowPassword=()=>setShowPassword((prevShowPassword)=>!prevShowPassword)
 
-    const googleSuccess = async (res)=>{
-        const result= res?.profileObj //cannot get property porfileObj of undefined
-        const token = res?.tokenId
+    // const googleSuccess = async (res)=>{
+    //     const result= res?.profileObj //cannot get property porfileObj of undefined
+    //     const token = res?.tokenId
 
-        try {
-            dispatch({type:AUTH, data :{result,token}})
-            history.push("/")
-        } catch (error) {
-            console.log(error)
-        }
+    //     try {
+    //         dispatch({type:AUTH, data :{result,token}})
+    //         history.push("/")
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
 
-    }
-    const googleFailure=()=>{
-        alert("Google Sign in was unsuccessfull. Try Again Later")
-    }
+    // }
+    // const googleFailure=()=>{
+    //     alert("Google Sign in was unsuccessfull. Try Again Later")
+    // }
 
 
 
@@ -107,7 +107,7 @@ const Signup=()=>{
                     <Button type="submit" fullWidth variant="contained" color='primary' className={classes.submit}>
                         { isSignup ? 'Sign Up' : 'Sign In' }
                     </Button>
-                    <GoogleLogin 
+                    {/* <GoogleLogin 
                         clientId='745001391526-nigrkb6gmfbh3jiql97drcncapceh418.apps.googleusercontent.com'
                         render={(renderProps)=>(
                             <Button 
@@ -124,7 +124,7 @@ const Signup=()=>{
                         onSuccess={(response) => googleSuccess(response)}
                         onError={googleFailure}
                         cookiePolicy='single_host_origin'
-                    />
+                    /> */}
                     
                     <Grid container justifyContent='flex-end'>
                         <Grid item>
