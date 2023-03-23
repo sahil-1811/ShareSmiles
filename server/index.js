@@ -19,7 +19,8 @@ app.use('/posts', postRoutes);
 app.use('/user',userRoutes)
 
 //lZ2QdEtHnVpvNCU
-const CONNECTION_URL = "mongodb+srv://sahil-1811:sahilmody@cluster0.d5wjeuo.mongodb.net/test"
+
+const CONNECTION_URL = process.env.CONNECTION_URL
 const PORT = process.env.PORT || 5000;
 
 
