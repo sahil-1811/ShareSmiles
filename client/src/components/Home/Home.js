@@ -7,7 +7,7 @@ import ChipInput from 'material-ui-chip-input'
 
 import Posts from '../Posts/Posts'
 import Form from '../Form/Form'
-import {getPosts, getPostsBySearch} from '../../actions/posts'
+import { getPostsBySearch} from '../../actions/posts'
 import Pagination from '../Pagination'
 
 
